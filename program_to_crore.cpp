@@ -1,0 +1,14 @@
+
+ 
+cprintf("%c",219);gotoxy(x2,i);cprintf("%c",219);}}/************************************************************** Function that controls the main menu ***************************************************************/void mainmenu(){ displayhead(1);int selected=1;char options[3][20]={" PLAY "," Admin. Login "," Exit "},ch;textbackground(BLACK);textcolor(WHITE);cout<<"\n\n\n\n\n\n\t\t\t ";cprintf(" MAIN MENU ");cout<<"\n\n\n\t\t\t ";textbackground(BLUE);cprintf(options[0]);cout<<"\n\n\t\t\t"<<options[1]<<"\n\n\t\t\t "<<options[2];drawbox(30,6,51,17,WHITE,LIGHTGRAY);do{ ch=getch();if (ch==80) //down arrowselected++;if (ch==72) //up arrowselected--;if (ch==27) //escape keyquit();if (ch==59) //F1 Keyshowhelp();if (selected>3) //selection out of boundsselected=1;if (selected<1) //selection out of boundsselected=3;
+ 
+displayhead(1);textbackground(BLACK);textcolor(WHITE);cout<<"\n\n\n\n\n\n\t\t\t ";cprintf(" MAIN MENU ");if(selected==1){cout<<"\n\n\n\t\t\t ";textbackground(BLUE);cprintf(options[0]);cout<<"\n\n\t\t\t"<<options[1]<<"\n\n\t\t\t "<<options[2];}else if(selected==2){cout<<"\n\n\n\t\t\t "<<options[0]<<"\n\n\t\t\t";textbackground(BLUE);cprintf(options[1]);cout<<"\n\n\t\t\t "<<options[2];}else if(selected==3){cout<<"\n\n\n\t\t\t "<<options[0];cout<<"\n\n\t\t\t "<<options[1]<<"\n\n\t\t\t";textbackground(BLUE);cprintf(options[2]);}drawbox(30,6,51,17,WHITE,LIGHTGRAY);}while(ch!=13);if(selected==1)play();else if(selected==2)adminmenu();else if(selected==3)quit();}/************************************************************** Function to start and run the program ***************************************************************/void main(){ clrscr();int gdriver = DETECT, gmode, errorcode;initgraph(&gdriver, &gmode, "");errorcode = graphresult();if (errorcode != grOk) /* an error occurred */{ printf("Graphics error: %s\n", grapherrormsg(errorcode));printf("Press any key to halt:");
+ 
+getch();exit(1); /* terminate with an error code */}//Draw the KBC logosetcolor(BLUE);for(int n=100;n<107;n++)circle(getmaxx()/2,getmaxy()/2,n);setcolor(LIGHTBLUE);arc((getmaxx()/2)-100,(getmaxy()/2)+0, 300, 60, 100);arc((getmaxx()/2)+100,(getmaxy()/2)+0, 120, 240, 100);arc((getmaxx()/2)+0,(getmaxy()/2)+100, 30, 150, 100);arc((getmaxx()/2)+0,(getmaxy()/2)-100, 210, 330, 100);arc((getmaxx()/2)+70,(getmaxy()/2)+70, 76, 194, 100);arc((getmaxx()/2)+70,(getmaxy()/2)-70, 165, 285, 100);arc((getmaxx()/2)-70,(getmaxy()/2)+70, 345, 104, 100);arc((getmaxx()/2)-70,(getmaxy()/2)-70, 255, 16, 100);setcolor(WHITE);settextstyle(0,HORIZ_DIR,2);outtextxy((getmaxx()/2)-160,(getmaxy()/2)-10,"Kaun Banega Crorepati");delay(1000);getch();getch();closegraph();delay(500); _setcursortype(_NOCURSOR);start(); //Displays the Loading splash screengetch();main_menu:randomize();mainmenu();getch();displayhead(1);goto main_menu; //Program does not end until the user wishes to exit.
+ 
+} 
+ 
+  
+ 
+ 
+  
